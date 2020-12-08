@@ -3,7 +3,7 @@ from requests.adapters import HTTPAdapter
 from requests.packages.urllib3.util.retry import Retry
 import re
 from time import sleep
-from mongodb import mongodb
+from mongodb.mongodb import mongodb
 
 '''parsing
 Request and parse HTML.

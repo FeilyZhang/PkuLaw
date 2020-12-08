@@ -1,5 +1,5 @@
 from browser import browser
-from mongodb import mongodb
+from mongodb.mongodb import mongodb
 
 '''pkulaw
 Get pkulaw related data.

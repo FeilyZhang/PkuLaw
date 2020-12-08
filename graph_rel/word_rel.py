@@ -1,4 +1,4 @@
-from mongodb import mongodb
+from mongodb.mongodb import mongodb
 
 class word_rel:
 
