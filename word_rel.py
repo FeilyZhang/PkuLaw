@@ -1,33 +1,34 @@
 from mongodb import mongodb
-from graph import graph
 
 class word_rel:
 
     __db = 'pkulaw'
-    __col = 'dept_detail'
+    __cols = None
     __sets = None
     __realSets = None
     __mongodb = None
     __indexs = None
 
-    def __init__(self):
+    def __init__(self, cols):
         self.__mongodb = mongodb()
         self.__sets = list()
         self.__realSets = list()
         self.__indexs = list()
+        self.__cols = cols
 
     def setSets(self):
-        for eles in self.__mongodb.find_all(self.__db, self.__col):
-            for ele in eles['dept']:
-                if ele not in self.__sets:
-                    self.__sets.append(ele)
-                    self.__realSets.append({
-                        'word' : ele,
-                        'rel' : [{
-                            'to' : -1,
-                            'num' : -1
-                        }]
-                    })
+        for col in self.__cols:
+            for eles in self.__mongodb.find_all(self.__db, col):
+                for ele in eles['dept']:
+                    if ele not in self.__sets:
+                        self.__sets.append(ele)
+                        self.__realSets.append({
+                            'word' : ele,
+                            'rel' : [{
+                                'to' : -1,
+                                'num' : -1
+                            }]
+                        })
         return self
 
     def getSets(self):
@@ -37,11 +38,12 @@ class word_rel:
         return self.__realSets
 
     def setIndex(self):
-        for eles in self.__mongodb.find_all(self.__db, self.__col):
-            index = []
-            for ele in eles['dept']:
-                index.append(self.__sets.index(ele))
-            self.__indexs.append(index)
+        for col in self.__cols:
+            for eles in self.__mongodb.find_all(self.__db, col):
+                index = []
+                for ele in eles['dept']:
+                    index.append(self.__sets.index(ele))
+                self.__indexs.append(index)
         return self
 
     def getIndexs(self):
@@ -76,33 +78,10 @@ class word_rel:
             print(line)
             line = ''
 
-
     def deepCopy(self, lst):
         target = list()
         for ele in lst:
             target.append(ele)
         return target
-
-
-rel = word_rel()
-rel.setSets().setIndex()
-#print(rel.getSets())
-rel.setRels()
-print(rel.getSets())
-for ele in rel.getRealSets():
-    print(ele)
-
-rel = word_rel()
-rel.setSets().setIndex().setRels()
-graph = graph()
-size = []
-for ele in rel.getRealSets():
-    for e in ele['rel']:
-        if e['to'] == ele['word']:
-            size.append(e['num'] * 100)
-print(size)
-graph.add_nodes(rel.getSets())
-graph.add_edges(rel.getRealSets())
-graph.drawAndShow(size)
 
 

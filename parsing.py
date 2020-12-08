@@ -2,6 +2,7 @@ import requests
 from requests.adapters import HTTPAdapter
 from requests.packages.urllib3.util.retry import Retry
 import re
+from time import sleep
 from mongodb import mongodb
 
 '''parsing
@@ -38,10 +39,15 @@ class parsing:
         #pub_date = re.findall(r'<strong>发文字号：</strong>.*?<li  title="(.*?)"><strong>发布日期：</strong>', self.__html, re.S|re.M)
         #exe_date = re.findall(r'<strong>发布日期：</strong>.*?<li  title="(.*?)"><strong>实施日期：</strong>', self.__html, re.S|re.M)
         title = re.findall(r'<li  title="(.*?)">', self.__html, re.S|re.M)
+        sleep(0.5)
         timeliness = re.findall(r'<strong>时效性：</strong>.*?<span title="(.*?)">', self.__html, re.S|re.M)
+        sleep(0.5)
         level = re.findall(r'<strong>效力级别：</strong>.*?<span title="(.*?)">', self.__html, re.S|re.M)
+        sleep(0.5)
         type = re.findall(r'<span title="(.*?)">', self.__html, re.S|re.M)
+        sleep(0.5)
         content = re.findall(r'<div class="zhang" id="div_fulltext_start">(.*?)<div class="fb-info fb-info-code">', self.__html, re.S|re.M)
+        sleep(0.5)
         dept = type[0 : type.index(timeliness[0])]
         type = type[type.index(level[0]) + 1 : ]
         dic = {

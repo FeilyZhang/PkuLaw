@@ -7,7 +7,8 @@ class graph:
     __dg = None
 
     def __init__(self):
-        self.__dg = nx.DiGraph()
+        #self.__dg = nx.DiGraph()
+        self.__dg = nx.Graph()
 
     def add_nodes(self, nodes):
         for i in range(0, len(nodes)):
