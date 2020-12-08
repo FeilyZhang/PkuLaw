@@ -1,5 +1,5 @@
-from graph import graph
-from word_rel import word_rel
+from graph_rel.graph import graph
+from graph_rel.word_rel import word_rel
 
 # 需要绘图的数据集合
 cols = ['law_detail', 'justice_detail', 'rule_detail', 'dept_detail', 'industry_detail', 'party_detail', 'group_detail']
