@@ -30,7 +30,7 @@ def readCSV(file):
         return f.read()
 
 
-ret = readCSV('C:\\Users\\hello\\Desktop\\dict.txt')
+ret = readCSV('dict.txt')
 s = []
 for ele in ret.split('\n'):
     s.append(ele)
@@ -77,7 +77,7 @@ for d in range(0, len(dic)):
         WordCloud()
         .add("", r, word_size_range=[20, 100], shape=SymbolType.DIAMOND)
         .set_global_opts(title_opts=opts.TitleOpts(title=str(int(d + 1)) + "月关键词"))
-        .render('html/' + str(int(d + 1)) + ".html")
+        .render('templates/' + str(int(d + 1)) + ".html")
     )
     size.append(len(r))
 
@@ -90,5 +90,5 @@ c = (
     .add_xaxis(attr)
     .add_yaxis("关键词", size[0 : len(size) - 1], is_smooth=True)
     .set_global_opts(title_opts=opts.TitleOpts(title="2020年1月 - 11月COVID-19官方文本关键词统计", subtitle="算法：TF-IDF / 词库：COVID-19自定义词库"))
-    .render("html/line.html")
+    .render("templates/line.html")
 )
