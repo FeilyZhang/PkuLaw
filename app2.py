@@ -2,7 +2,7 @@ from graph_rel.graph import graph
 from graph_rel.word_rel import word_rel
 
 # 需要绘图的数据集合
-cols = ['law_detail', 'justice_detail', 'rule_detail', 'dept_detail', 'industry_detail', 'party_detail', 'group_detail']
+cols = ['law_details', 'justice_details', 'rule_details', 'dept_details', 'industry_details', 'party_details']
 rel = word_rel(cols)
 # 填充set并设置元素之间关系
 rel.setSets().setIndex().setRels()

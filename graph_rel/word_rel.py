@@ -2,7 +2,7 @@ from mongodb.mongodb import mongodb
 
 class word_rel:
 
-    __db = 'pkulaw'
+    __db = 'pkulaw1'
     __cols = None
     __sets = None
     __realSets = None
