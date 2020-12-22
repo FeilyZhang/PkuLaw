@@ -1,4 +1,4 @@
-from browser import browser
+from browser.browser import browser
 from mongodb.mongodb import mongodb
 
 '''pkulaw
@@ -26,31 +26,31 @@ class pkulaw:
 
     def get_laws(self):
         self.execute_common(500, 'XA01')
-        return self.__browser_instance.click_and_get(self.__rule, self.__keys, 1, 1, self.__mongo, 'pkulaw', 'law').get_texts_and_attrs()
+        return self.__browser_instance.click_and_get(self.__rule, self.__keys, 1, 1, self.__mongo, 'pkulaw1', 'law').get_texts_and_attrs()
 
     def get_rules(self):
         self.execute_common(500, 'XC02')
-        return self.__browser_instance.click_and_get(self.__rule, self.__keys, 1, 2, self.__mongo, 'pkulaw', 'rule').get_texts_and_attrs()
+        return self.__browser_instance.click_and_get(self.__rule, self.__keys, 1, 1, self.__mongo, 'pkulaw1', 'rule').get_texts_and_attrs()
 
     def get_justices(self):
         self.execute_common(500, 'XG04')
-        return self.__browser_instance.click_and_get(self.__rule, self.__keys, 1, 3, self.__mongo, 'pkulaw', 'justice').get_texts_and_attrs()
+        return self.__browser_instance.click_and_get(self.__rule, self.__keys, 1, 2, self.__mongo, 'pkulaw1', 'justice').get_texts_and_attrs()
 
     def get_depts(self):
         self.execute_common(500, 'XE03')
-        return self.__browser_instance.click_and_get(self.__rule, self.__keys, 1, 4, self.__mongo, 'pkulaw', 'dept').get_texts_and_attrs()
+        return self.__browser_instance.click_and_get(self.__rule, self.__keys, 1, 2, self.__mongo, 'pkulaw1', 'dept').get_texts_and_attrs()
 
     def get_parties(self):
         self.execute_common(500, 'XR12')
-        return self.__browser_instance.click_and_get(self.__rule, self.__keys, 1, 1, self.__mongo, 'pkulaw', 'party').get_texts_and_attrs()
+        return self.__browser_instance.click_and_get(self.__rule, self.__keys, 1, 1, self.__mongo, 'pkulaw1', 'party').get_texts_and_attrs()
 
     def get_groups(self):
         self.execute_common(500, 'XI05')
-        return self.__browser_instance.click_and_get(self.__rule, self.__keys, 1, 1, self.__mongo, 'pkulaw', 'group').get_texts_and_attrs()
+        return self.__browser_instance.click_and_get(self.__rule, self.__keys, 1, 1, self.__mongo, 'pkulaw1', 'group').get_texts_and_attrs()
 
     def get_industries(self):
         self.execute_common(500, 'XK06')
-        return self.__browser_instance.click_and_get(self.__rule, self.__keys, 1, 1, self.__mongo, 'pkulaw', 'industry').get_texts_and_attrs()
+        return self.__browser_instance.click_and_get(self.__rule, self.__keys, 1, 1, self.__mongo, 'pkulaw1', 'industry').get_texts_and_attrs()
 
     def execute_common(self, scroll_val, group_val):
         self.__browser_instance.clear_texts_and_attrs().refresh()

@@ -24,6 +24,11 @@ class graph:
         plt.rcParams['font.sans-serif'] = ['simsun']
         plt.show()
 
+    def drawAndShow1(self):
+        nx.draw(self.__dg, with_labels=True)
+        plt.rcParams['font.sans-serif'] = ['simsun']
+        plt.show()
+
     def randomcolor(self, size):
         rst = []
         colorArr = ['1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F']
