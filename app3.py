@@ -64,17 +64,10 @@ for i in range(0, len(rst)):
 for i in range(0, len(dic)):
     print(str(i + 1) + '月份' + str(sorted(dic[i].items(),key=lambda x:x[1],reverse=True)))
 
-sss = []
-for ele in rst:
-    sss.extend(ele)
-print(sss)
-ddd = {}
-for s in sss:
-    if s not in ddd.keys():
-        ddd[s] = 1
-    else:
-        ddd[s] += 1
-print(sorted(ddd.items(),key=lambda x:x[1],reverse=True))
+
+'''
+绘制词云图
+'''
 size = []
 for d in range(0, len(dic)):
     r = []
@@ -87,11 +80,15 @@ for d in range(0, len(dic)):
         .render('html/' + str(int(d + 1)) + ".html")
     )
     size.append(len(r))
+
+'''
+绘制折线图
+'''
 attr =["1月", "2月", "3月", "4月", "5月", "6月", "7月", "8月", "9月", "10月", "11月"]
 c = (
     Line()
     .add_xaxis(attr)
     .add_yaxis("关键词", size[0 : len(size) - 1], is_smooth=True)
     .set_global_opts(title_opts=opts.TitleOpts(title="2020年1月 - 11月COVID-19官方文本关键词统计", subtitle="算法：TF-IDF / 词库：COVID-19自定义词库"))
-    .render("line_smooth.html")
+    .render("html/line.html")
 )
